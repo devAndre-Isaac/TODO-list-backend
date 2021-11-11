@@ -2,9 +2,9 @@ import { Router } from "express";
 
 import tasksController from "../controller/tasks";
 
-const taskRouter = Router();
+const routes = Router();
 
-taskRouter.post("/tasks/save", tasksController.store)
+routes.post("/tasks/save", tasksController.store)
 
 
-  export { taskRouter };
+  export default routes
