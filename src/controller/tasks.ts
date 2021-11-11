@@ -22,5 +22,12 @@ class tasksController {
       const readById = await repository.findOne(id)
       return res.status(200).json(readById)
     }
+    async update(req: Request, res: Response) {
+      const repository = getMongoRepository(Tasks);
+      const { id } = req.params
+      const update = await repository.update(id, req.body)
+      const updateSave = repository.save(update as any)
+      return res.status(201).json(updateSave);
+    }
 }
 export default new tasksController();
