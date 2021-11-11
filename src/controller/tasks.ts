@@ -19,7 +19,7 @@ class tasksController {
     async readById(req: Request, res: Response) {
       const repository = getMongoRepository(Tasks);
       const { id } = req.params
-      const readById = repository.findOne(id)
+      const readById = await repository.findOne(id)
       return res.status(200).json(readById)
     }
 }
