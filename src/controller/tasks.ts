@@ -5,7 +5,7 @@ import { Tasks } from '../entity/tasks';
 
 
 class tasksController {
-    async store(req: Request, res: Response) {
+    async create(req: Request, res: Response) {
       const repository = getMongoRepository(Tasks);
       const taskToSave = repository.create(req.body)
       const task = await repository.save(taskToSave);
@@ -26,8 +26,15 @@ class tasksController {
       const repository = getMongoRepository(Tasks);
       const { id } = req.params
       const update = await repository.update(id, req.body)
-      const updateSave = repository.save(update as any)
+      const updateSave = repository.create(update as any)
       return res.status(201).json(updateSave);
+    } 
+    async delete(req: Request, res: Response) {
+      const repository = getMongoRepository(Tasks);
+      const { id } = req.params
+      const deleteTask = await repository.delete(id)
+      const deleteSave = repository.create(deleteTask as any)
+      return res.status(201).json(deleteSave);
     }
 }
 export default new tasksController();
