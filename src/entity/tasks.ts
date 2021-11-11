@@ -13,6 +13,9 @@ export class Tasks {
   id: ObjectID;
 
   @Column()
+  task: string
+
+  @Column()
   description: string;
 
   @CreateDateColumn()
