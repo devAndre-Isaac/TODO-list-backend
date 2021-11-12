@@ -17,6 +17,9 @@ export class Tasks {
 
   @Column()
   description: string;
+  
+  @Column()
+  done: boolean
 
   @CreateDateColumn()
   created_at: Date;
