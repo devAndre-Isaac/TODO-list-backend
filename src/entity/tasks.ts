@@ -12,13 +12,13 @@ export class Tasks {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column()
+  @Column({nullable: false})
   task: string
 
-  @Column()
+  @Column({nullable: false})
   description: string;
   
-  @Column()
+  @Column({nullable: true})
   done: boolean
 
   @CreateDateColumn()
