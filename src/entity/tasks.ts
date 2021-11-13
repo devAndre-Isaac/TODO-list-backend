@@ -18,7 +18,7 @@ export class Tasks {
   @Column({nullable: false})
   description: string;
   
-  @Column({nullable: true, default: true})
+  @Column({nullable: true, default: false})
   done: boolean = false
 
   @CreateDateColumn()
