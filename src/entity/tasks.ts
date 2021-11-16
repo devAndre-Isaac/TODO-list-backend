@@ -12,14 +12,14 @@ export class Tasks {
   @ObjectIdColumn()
   id: ObjectID;
 
-  @Column({nullable: false})
-  task: string
+  @Column({ nullable: false })
+  task: string;
 
-  @Column({nullable: false})
+  @Column({ nullable: false })
   description: string;
-  
-  @Column({nullable: true, default: false})
-  done: boolean = false
+
+  @Column({ nullable: true, default: false })
+  done: boolean = false;
 
   @CreateDateColumn()
   created_at: Date;

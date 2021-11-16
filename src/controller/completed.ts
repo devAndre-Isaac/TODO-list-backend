@@ -25,8 +25,8 @@ class completedController {
   }
   async readAllCompletedTasks(req: Request, res: Response) {
     const repository = getMongoRepository(CompletedTasks);
-    const read = await repository.find()
-    return res.status(200).json(read)
+    const read = await repository.find();
+    return res.status(200).json(read);
   }
 }
 
