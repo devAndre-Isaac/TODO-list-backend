@@ -28,6 +28,12 @@ class completedController {
     const read = await repository.find();
     return res.status(200).json(read);
   }
+  async readCompletedTaskById(req: Request, res: Response) {
+    const repository = getMongoRepository(CompletedTasks);
+    const { id } = req.params;
+    const readId = await repository.findOne(id);
+    return res.status(200).json(readId);
+  }
 }
 
 export default new completedController();
