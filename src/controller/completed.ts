@@ -15,7 +15,7 @@ class completedController {
     const verifTask = await repositoryForVerify.findOne(id);
 
     const markedTask = { ...verifTask, done: done };
-
+    delete markedTask.id
     await saveCompletedTask(markedTask);
 
     const taskToSave = repositoryForVerify.create(markedTask as any);
