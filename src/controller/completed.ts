@@ -9,19 +9,17 @@ class completedController {
   async mark(req: Request, res: Response) {
     const repositoryForVerify = getMongoRepository(Tasks);
 
-    const { id } = req.params;
+    const { idOfCompleted } = req.params;
     const { done } = req.body;
 
-    const verifTask = await repositoryForVerify.findOne(id);
+    const verifTask = await repositoryForVerify.findOne(idOfCompleted);
 
-    const markedTask = { ...verifTask, done: done };
-    delete markedTask.id
-    await saveCompletedTask(markedTask);
+    const upCreate = repositoryForVerify.create({ ...verifTask, done: done });
+    const upSave = await repositoryForVerify.save(upCreate);
 
-    const taskToSave = repositoryForVerify.create(markedTask as any);
-    const task = await repositoryForVerify.save(taskToSave);
+    await saveCompletedTask(upCreate);
 
-    return res.status(201).json(task);
+    return res.status(201).json(upSave);
   }
   async readAllCompletedTasks(req: Request, res: Response) {
     const repository = getMongoRepository(CompletedTasks);
@@ -30,8 +28,8 @@ class completedController {
   }
   async readCompletedTaskById(req: Request, res: Response) {
     const repository = getMongoRepository(CompletedTasks);
-    const { id } = req.params;
-    const readId = await repository.findOne(id);
+    const { idOfCompleted } = req.params;
+    const readId = await repository.findOne(idOfCompleted);
     return res.status(200).json(readId);
   }
 }
