@@ -10,7 +10,7 @@ import {
 @Entity("completed_tasks")
 export class CompletedTasks {
   @ObjectIdColumn()
-  id: ObjectID;
+  idOfCompleted: ObjectID;
 
   @Column({ nullable: true })
   task: string;
