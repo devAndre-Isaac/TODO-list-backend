@@ -17,7 +17,7 @@ class completedController {
     const upCreate = repositoryForVerify.create({ ...verifTask, done: done });
     const upSave = await repositoryForVerify.save(upCreate);
 
-    await saveCompletedTask(upCreate);
+    await saveCompletedTask(upCreate.task, upCreate.description, upCreate.done);
 
     return res.status(201).json(upSave);
   }
