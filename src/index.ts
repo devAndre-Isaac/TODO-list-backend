@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import express from "express";
 import cors from "cors";
-import "./database";
 
+import "./database";
 import taskRouter from "./routes/task.routes";
 import completedTaskRouter from "./routes/tasksCompleted.routes";
 

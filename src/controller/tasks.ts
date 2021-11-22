@@ -13,7 +13,7 @@ class tasksController {
   async read(req: Request, res: Response) {
     const repository = getMongoRepository(Tasks);
     const { task } = req.query;
-    let read = await repository.find()
+    let read = await repository.find();
     if (task) {
       read = await repository.find({ where: { task } });
     }
